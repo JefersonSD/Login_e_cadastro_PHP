@@ -4,13 +4,9 @@ require_once 'CLASSES/conexaoBanco.php';
 $conexao = new Conexao("projeto_funag","localhost","root","");	
 
 ?>
-
 <?php
-
 $conexao->conectar();
 $pessoasEEnderecos = $conexao->queryBd($conexao->getPdo());
-
-
 $pdf = new FPDF();
 $pdf->addPage();
 $pdf->setFont('Arial','B', 16 );

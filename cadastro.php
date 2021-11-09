@@ -4,7 +4,6 @@
 	require_once 'CLASSES/conexaoBanco.php';
 	$conexao = new Conexao("projeto_funag","localhost","root","");
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

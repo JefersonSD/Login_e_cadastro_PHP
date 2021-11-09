@@ -29,7 +29,6 @@ class Conexao{
 
 	public  function conectar ()
 	{
-
 		try {
 			$this->pdo = new PDO("mysql:dbname=".$this->nome.";host=".$this->host,$this->usuario,$this->senha);
 		} catch (PDOException $e) {
@@ -37,7 +36,6 @@ class Conexao{
 			global $msgErro; 
 			$msgErro = $e->getMessage();
 		}
-		
 	}
 
     public  function queryBd ($pdo)
@@ -67,9 +65,7 @@ class Conexao{
 			$pessoa->setEnderecos($addEnderecos);
 			$arrayDePessoas[] = $pessoa;
 		}
-
 		return $arrayDePessoas;
-
 	}
 }
 ?>

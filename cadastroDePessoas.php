@@ -19,15 +19,13 @@
 			input[type="submit"]{
 				width: 250px;
 			}
-
-			.btn2{
+			.btn1{
 				position: absolute;
 				left: 465px;
 				width: 150px;
 			}
 			.div{
 				display: inline-block;
-				background-color: red;
 			}
 		</style>	
 	</head>
@@ -48,7 +46,6 @@
 			<input type="submit" value="Cadastrar">
 			<hr>
 		</form>
-
 		<?php
 		if(isset($_POST['nome']))
 		{
@@ -79,21 +76,20 @@
 			echo "Preencha todos os campos!";
 		}
 	}
-
 	?>
 	<h2>Buscar pessoas</h2>
 	<form method="GET">
 		<div class="div">
-			<input type="text" name="busca" size="50" placeholder="Insira o rg da pessoa">
+			<input type="text" name="busca" size="50" placeholder="Insira o RG da pessoa a qual deseja pesquisar">
 		</div>
 		<div class="div">
 			<button class="btn">Buscar</button>
 		</div>
-
+		<div class="div"><a href="telaDeCadastro.php"><strong>Voltar</strong></a></div>
 	</form>
+
 	<br>
 	<?php
-
 	if(isset($_GET['busca'])){
 		if(!isset($_GET['busca'])){
 			header("Location: cadastroDePessoas.php");
@@ -116,23 +112,19 @@
 				exit;	
 			}
 		}	
-
 		if(count($resultado)){
 			foreach ($resultado as $_resultado) {
 				?>
-				<label>Nome: <?php echo $_resultado["nome"]?></label>
+				<label>Nome: <?php echo $_resultado["nome"]?>&nbsp | RG: <?php echo $_resultado["identidade"]?>&nbsp | Data de nascimento: <?php echo $_resultado["data_nascimento"]?></label>
 				<form method="POST">
-					<button class="btn2" name="button">Novo endereço</button>
+					<button class="btn1" name="button">Novo endereço</button>
 				</form>
 				<br>
 			<?php }} else { ?>
 				<label>Não foram encontrados resultados com os parâmetros informados!</label>	
 			<?php } ?>
-
 		<?php } ?>
-
 		<?php
-
 		if(isset($_POST['button'])){
 			?>	
 			<h2>Novo Endereço</h2>
@@ -157,20 +149,15 @@
 			if(!empty($novoEndereco->getRua()) && !empty($novoEndereco->getCep()) && !empty($novoEndereco->getCidade()) && !empty($novoEndereco->getUf())){
 				$conexao->conectar();
 				if($conexao->getMsgErro() == ""){
-
 					$novoEndereco->cadastrarNovoEndereco($novoEndereco->getRua(),$novoEndereco->getCidade(),$novoEndereco->getCep(), $novoEndereco->getUf(), $_resultado["id_pessoa"] ,$conexao->getPdo()); 
 					echo "Cadastro realizado com sucesso!";
-
 				}else{
 					echo "Erro".$conexao->getMsgErro(); 
-					}
-
-				}else{
-					echo "Preencha todos os campos!";
+				}
+			}else{
+				echo "Preencha todos os campos!";
 			}
-	}
-		
-?>
-
+		}	
+		?>
 	</body>
 	</html>
