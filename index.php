@@ -57,11 +57,12 @@
 			<input type="email" placeholder="E-mail" name="email" maxlength="50">
 			<input type="password" placeholder="Senha" name="senha" maxlength="15">
 			<input type="submit" value="ACESSAR">
-			<a href="cadastro.php">Ainda não possui cadastro?<strong>Cadastre-se</strong></a>
+			<a href="cadastro.php">Ainda não possui cadastro?<strong>Cadastre-se
+			</strong></a>
 		</form>
 		</div>
-			
-			<?php
+
+		    <?php
 
 			if(isset($_POST['email']))
 			{
